@@ -3,8 +3,13 @@ const dotenv = require('dotenv')
 
 // Load env vars
 dotenv.config({path: './config/config.env'})
+// Load routes
+const bootcamps = require('./routes/bootcamps')
 
 const app = express()
+
+// Mount routes
+app.use('/api/v1/bootcamps', bootcamps)
 
 const PORT = process.env.PORT || 5000
 
