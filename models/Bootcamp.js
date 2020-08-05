@@ -15,11 +15,7 @@ const BootcampSchema = new mongoose.Schema({
     maxlength: [500, 'Description can not be more than 500 characters.']
   },
   website: {
-    type: String,
-    match: [
-      /https?"\/\/(www\.)?[-a-zA-z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
-      'Please enter valid URL with HTTP or HTTPS'
-    ]
+    type: String
   },
   phone: {
     type: String,
@@ -39,12 +35,10 @@ const BootcampSchema = new mongoose.Schema({
   location: {
     type: {
       type: String,
-      enum: ['Point'],
-      required: true
+      enum: ['Point']
     },
     coordinates: {
       type: [Number],
-      required: true,
       index: '2dsphere'
     },
     formattedAddress: String,
